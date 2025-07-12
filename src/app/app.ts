@@ -6,7 +6,7 @@ import { BarcodeTable } from './barcode-table/barcode-table';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, BarcodeTable],
+  imports: [RouterOutlet], //, BarcodeTable
   templateUrl: './app.html',
   styleUrl: './app.scss'
   

@@ -1,21 +1,16 @@
+<!-- src/app/barcode-table/barcode-table.html -->
 <div style="margin: 20px;">
   <h1>סריקת ברקודים</h1>
-  <table
-    mat-table
-    [dataSource]="rows()"
-    class="mat-elevation-z8"
-    style="width: 100%;"
-  >
+  <table mat-table [dataSource]="rows()" class="mat-elevation-z8" style="width: 100%;">
     <!-- Barcode Column -->
     <ng-container matColumnDef="barcode">
       <th mat-header-cell *matHeaderCellDef>ברקוד</th>
       <td mat-cell *matCellDef="let row; let i = index">
         <input
-          matInput
           [(ngModel)]="rows()[i].barcode"
           (change)="onBarcodeInput(rows()[i].barcode, i)"
-          placeholder="הכנס ברקוד"
-          autocomplete="off"
+          (keyup.enter)="onBarcodeInput(rows()[i].barcode, i)"
+          placeholder="סרוק ברקוד"
           style="width: 100%;"
         />
       </td>
