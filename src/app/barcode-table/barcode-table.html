@@ -1,0 +1,43 @@
+<div style="margin: 20px;">
+  <h1>סריקת ברקודים</h1>
+  <table
+    mat-table
+    [dataSource]="rows()"
+    class="mat-elevation-z8"
+    style="width: 100%;"
+  >
+    <!-- Barcode Column -->
+    <ng-container matColumnDef="barcode">
+      <th mat-header-cell *matHeaderCellDef>ברקוד</th>
+      <td mat-cell *matCellDef="let row; let i = index">
+        <input
+          matInput
+          [(ngModel)]="rows()[i].barcode"
+          (change)="onBarcodeInput(rows()[i].barcode, i)"
+          placeholder="הכנס ברקוד"
+          autocomplete="off"
+          style="width: 100%;"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>שם מוצר</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>כמות</th>
+      <td mat-cell *matCellDef="let row">{{ row.quantity }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div *ngIf="message()" style="color: red; margin-top: 10px;">
+    {{ message() }}
+  </div>
+</div>
